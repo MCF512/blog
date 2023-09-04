@@ -5,7 +5,35 @@
       "login": "egor",
       "password": "qwerty123",
       "registred_at": "2032-09-22",
-      "role_id": "0"
+      "role_id": 0
+    },
+    {
+      "login": "ivan",
+      "password": "qwerty123",
+      "registered_at": "2064-11-04 04:12",
+      "role_id": 2,
+      "id": "wgkyurY"
+    },
+    {
+      "login": "anton",
+      "password": "qwerty123",
+      "registered_at": "2035-11-05 10:44",
+      "role_id": 2,
+      "id": "La4WuwX"
+    },
+    {
+      "login": "oleg",
+      "password": "qwerty123",
+      "registered_at": "2060-02-12 04:49",
+      "role_id": 2,
+      "id": "Kp0orDY"
+    },
+    {
+      "login": "alex",
+      "password": "qwerty123",
+      "registered_at": "2043-09-19 20:02",
+      "role_id": 2,
+      "id": "eorQhKt"
     }
   ],
   "roles": [
