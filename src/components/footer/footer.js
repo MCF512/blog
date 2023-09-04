@@ -7,9 +7,9 @@ const FooterContainer = ({ className }) => {
   const [weather, setWeather] = useState('');
 
   useEffect(() => {
-    fetch('https://api.openweathermap.org/data/2.5/weather?q=Moscow&units=metric&lang=ru&appid=0f059adca29e4318251d1e737a876b35')
+    fetch('https://api.openweathermap.org/data/2.5/weather?q=Saint Petersburg&units=metric&lang=ru&appid=0f059adca29e4318251d1e737a876b35')
       .then((res) => res.json())
-      .then((name, main, weather) => {
+      .then(({ name, main, weather }) => {
         setCity(name);
         setTemperature(Math.round(main.temp));
         setWeather(weather[0].description);
