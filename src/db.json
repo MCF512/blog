@@ -4,14 +4,14 @@
       "id": "001",
       "login": "egor",
       "password": "qwerty123",
-      "registred_at": "2032-09-22",
+      "registered_at": "2032-09-22",
       "role_id": 0
     },
     {
       "login": "ivan",
       "password": "qwerty123",
       "registered_at": "2064-11-04 04:12",
-      "role_id": 2,
+      "role_id": 1,
       "id": "wgkyurY"
     },
     {
@@ -27,13 +27,6 @@
       "registered_at": "2060-02-12 04:49",
       "role_id": 2,
       "id": "Kp0orDY"
-    },
-    {
-      "login": "alex",
-      "password": "qwerty123",
-      "registered_at": "2043-09-19 20:02",
-      "role_id": 2,
-      "id": "eorQhKt"
     }
   ],
   "roles": [
