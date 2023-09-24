@@ -123,29 +123,15 @@
     {
       "author_id": "001",
       "post_id": "001",
-      "published_at": "2034-05-22 07:08",
-      "content": "Первый коммент",
-      "id": 1
-    },
-    {
-      "author_id": "001",
-      "post_id": "001",
-      "published_at": "2063-10-26 09:41",
-      "content": "Второй коммент",
-      "id": 2
-    },
-    {
-      "author_id": "001",
-      "post_id": "001",
-      "published_at": "2065-01-07 09:44",
-      "content": "ghfhgf",
+      "published_at": "2062-12-22 18:04",
+      "content": "Comment 1",
       "id": 3
     },
     {
       "author_id": "001",
       "post_id": "001",
-      "published_at": "2063-09-21 22:17",
-      "content": "111",
+      "published_at": "2057-09-04 15:30",
+      "content": "Comment2",
       "id": 4
     }
   ],
