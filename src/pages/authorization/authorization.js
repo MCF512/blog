@@ -7,10 +7,10 @@ import { server } from '../../bff';
 import { AuthFormError, Input, Button, H2 } from '../../components';
 import { useResetForm } from '../../hooks';
 import { Link, Navigate } from 'react-router-dom';
-import styled from 'styled-components'
 import { setUser } from '../../actions';
 import { selectUserRole } from '../../selectors';
 import { ROLE } from '../../constants';
+import styled from 'styled-components';
 
 const authFormSchema = yup.object().shape({
   login: yup.string()
@@ -53,7 +53,8 @@ const AuthorizationContainer = ({ className }) => {
         return
       }
 
-      dispatch(setUser(res))
+      dispatch(setUser(res));
+      sessionStorage.setItem('userData', JSON.stringify(res))
     })
   };
 
