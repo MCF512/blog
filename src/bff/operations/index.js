@@ -8,3 +8,4 @@ export * from './register';
 export * from './update-user-role';
 export * from './remove-user';
 export * from './remove-post-comment';
+export * from './save-post';
