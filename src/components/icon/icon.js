@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const IconContainer = ({ className, id, ...props }) => (
+const IconContainer = ({ className, id, inactive, ...props }) => (
   <div className={className} {...props}>
     <i className={`fa ${id}`} aria-hidden="true"></i>
   </div>
@@ -9,6 +9,7 @@ const IconContainer = ({ className, id, ...props }) => (
 export const Icon = styled(IconContainer)`
   font-size: ${({ size = '24px' }) => size};
   margin: ${({ margin = '0' }) => margin};
-  cursor: pointer;
+
+  cursor: ${({ inactive }) => inactive ? 'default' : 'pointer'};
   color: ${({ disabled }) => disabled ? "#ccc" : "#000"};
 `;

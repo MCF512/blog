@@ -1,6 +1,7 @@
 export * from './add-comment';
 export * from './add-user';
 export * from './add-session';
+export * from './add-post';
 export * from './get-comments';
 export * from './get-session';
 export * from './get-post';
@@ -11,4 +12,5 @@ export * from './set-user-role';
 export * from './delete-user';
 export * from './delete-session';
 export * from './delete-comment';
+export * from './delete-post';
 export * from './update-post';

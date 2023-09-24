@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Input, Icon } from "../../../../components";
 import { savePostAsync } from "../../../../actions";
@@ -14,45 +14,48 @@ const PostFormContainer = ({ className, post }) => {
   const navigate = useNavigate();
   const requestServer = useServerRequest();
 
-  const imageRef = useRef(null);
-  const titleRef = useRef(null);
+  const [imageUrlValue, setImageUrlValue] = useState(imageUrl)
+  const [titleValue, setTitleValue] = useState(title)
   const contentRef = useRef(null);
 
+  useLayoutEffect(() => {
+    setImageUrlValue(imageUrl)
+    setTitleValue(title)
+  }, [imageUrl, title])
+
   const onSave = () => {
-    const newImageUrl = imageRef.current.value;
-    const newTitle = titleRef.current.value;
     const newContent = sanitizeContent(contentRef.current.innerHTML);
 
     dispatch(
       savePostAsync(requestServer, {
         id,
-        imageUrl: newImageUrl,
-        title: newTitle,
+        imageUrl: imageUrlValue,
+        title: titleValue,
         content: newContent
       })
-    ).then(() => navigate(`/post/${id}`))
+    ).then(({ id }) => navigate(`/post/${id}`))
   }
 
   return (
     <div className={className}>
       <Input
-        ref={imageRef}
-        defaultValue={imageUrl}
+        value={imageUrlValue}
+        onChange={({ target }) => setImageUrlValue(target.value)}
         placeholder="Изображение..."
       />
       <Input
-        ref={titleRef}
-        defaultValue={title}
+        value={titleValue}
+        onChange={({ target }) => setTitleValue(target.value)}
         placeholder="Заголовок..."
       />
       <SpecialPanel
+        id={id}
         publishedAt={publishedAt}
         margin="20px 0"
         editButton={
           <Icon
             id='fa-floppy-o'
             size='21px'
-            margin='0 10px 0 0'
             onClick={onSave}
           />
         }
@@ -77,5 +80,7 @@ export const PostForm = styled(PostFormContainer)`
   & .post-text {
     font-size: 18px;
     white-space: pre-line;
+    border: 1px solid #000;
+    min-height: 80px;
   }
 `;
