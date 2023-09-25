@@ -8,6 +8,7 @@ export * from './get-post';
 export * from './get-roles';
 export * from './get-user';
 export * from './get-users';
+export * from './get-posts';
 export * from './set-user-role';
 export * from './delete-user';
 export * from './delete-session';
