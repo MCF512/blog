@@ -17,5 +17,5 @@ export const Button = styled(ButtonContainer)`
   height: 32px;
   border: 1px solid #000;
   background-color: #eee;
-  cursor: pointer;
+  cursor: ${({ disabled }) => disabled ? 'default' : 'pointer'};
 `;
