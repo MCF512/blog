@@ -7,6 +7,7 @@ import { SpecialPanel } from "../special-panel/special-panel";
 import { useNavigate } from "react-router-dom";
 import { useServerRequest } from "../../../../hooks";
 import styled from "styled-components"
+import { PROP_TYPE } from '../../../../constants';
 
 const PostFormContainer = ({ className, post }) => {
   const { id, title, imageUrl, content, publishedAt } = post;
@@ -84,3 +85,7 @@ export const PostForm = styled(PostFormContainer)`
     min-height: 80px;
   }
 `;
+
+PostForm.propTypes = {
+  post: PROP_TYPE.POST.isRequired
+}
