@@ -10,3 +10,5 @@ export * from './close-modal';
 export * from './save-post-async';
 export * from './remove-post-async';
 export * from './reset-post-data';
+export * from './add-comment';
+export * from './remove-comment'

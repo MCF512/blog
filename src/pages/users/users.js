@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
 import { PrivateContent, H2 } from '../../components';
 import { TableRow, UserRow } from './components';
-import { useServerRequest } from '../../hooks';
 import { ROLE } from '../../constants';
 import styled from 'styled-components';
-import { checkAccess } from '../../utils';
+import { checkAccess, request } from '../../utils';
 import { useSelector } from 'react-redux';
 import { selectUserRole } from '../../selectors';
 
@@ -13,7 +12,6 @@ const UsersContainer = ({ className }) => {
   const [users, setUsers] = useState([]);
   const [roles, setRoles] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
-  const requestServer = useServerRequest();
   const [shouldUpdateUsersList, setShouldUpdateUsersList] = useState(false)
 
   useEffect(() => {
@@ -22,23 +20,23 @@ const UsersContainer = ({ className }) => {
     }
 
     Promise.all([
-      requestServer('fetchUsers'),
-      requestServer('fetchRoles')
+      request('/users'),
+      request('/users/roles')
     ]).then(([usersRes, rolesRes]) => {
       if (usersRes.error || rolesRes.error) {
         setErrorMessage(usersRes.error || rolesRes.error);
         return;
       }
-      setUsers(usersRes.res);
-      setRoles(rolesRes.res);
+      setUsers(usersRes.data);
+      setRoles(rolesRes.data);
     });
-  }, [requestServer, shouldUpdateUsersList, userRole]);
+  }, [shouldUpdateUsersList, userRole]);
 
   const onUserRemove = (userId) => {
     if (!checkAccess([ROLE.ADMIN], userRole)) {
       return
     }
-    requestServer('removeUser', userId)
+    request(`/users/${userId}`, "DELETE")
       .then(() => {
         setShouldUpdateUsersList(!shouldUpdateUsersList);
       })
@@ -56,12 +54,12 @@ const UsersContainer = ({ className }) => {
             <div className="role-column">Роль</div>
           </TableRow>
 
-          {users.map(({ id, login, registeredAt, roleId }) => {
+          {users.map(({ id, login, createdAt, roleId }) => {
             return <UserRow
               key={id}
               id={id}
               login={login}
-              registeredAt={registeredAt}
+              createdAt={createdAt}
               roleId={roleId}
               roles={roles.filter(({ id: roleId }) => roleId !== ROLE.GUEST)}
               onUserRemove={() => onUserRemove(id)}

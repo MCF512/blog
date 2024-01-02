@@ -5,7 +5,6 @@ import { savePostAsync } from "../../../../actions";
 import { sanitizeContent } from "./utils";
 import { SpecialPanel } from "../special-panel/special-panel";
 import { useNavigate } from "react-router-dom";
-import { useServerRequest } from "../../../../hooks";
 import styled from "styled-components"
 import { PROP_TYPE } from '../../../../constants';
 
@@ -13,7 +12,6 @@ const PostFormContainer = ({ className, post }) => {
   const { id, title, imageUrl, content, publishedAt } = post;
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const requestServer = useServerRequest();
 
   const [imageUrlValue, setImageUrlValue] = useState(imageUrl)
   const [titleValue, setTitleValue] = useState(title)
@@ -28,8 +26,7 @@ const PostFormContainer = ({ className, post }) => {
     const newContent = sanitizeContent(contentRef.current.innerHTML);
 
     dispatch(
-      savePostAsync(requestServer, {
-        id,
+      savePostAsync(id, {
         imageUrl: imageUrlValue,
         title: titleValue,
         content: newContent

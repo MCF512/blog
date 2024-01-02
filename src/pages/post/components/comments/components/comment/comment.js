@@ -2,21 +2,20 @@ import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from "react-redux";
 import { Icon } from "../../../../../../components";
 import { CLOSE_MODAL, openModal, removeCommentAsync } from "../../../../../../actions";
-import { useServerRequest } from "../../../../../../hooks";
 import styled from "styled-components"
 import { selectUserRole } from "../../../../../../selectors";
 import { ROLE } from "../../../../../../constants";
 
 const CommentContainer = ({ className, id, author, content, publishedAt, postId }) => {
   const dispatch = useDispatch();
-  const requestServer = useServerRequest();
+
   const userRole = useSelector(selectUserRole)
 
   const onCommentRemove = (id) => {
     dispatch(openModal({
       text: 'Удалить комментарий',
       onConfirm: () => {
-        dispatch(removeCommentAsync(requestServer, postId, id))
+        dispatch(removeCommentAsync(postId, id))
         dispatch(CLOSE_MODAL)
       },
       onCancel: () => dispatch(CLOSE_MODAL)
