@@ -4,6 +4,7 @@ WORKDIR /usr/src/blog
 
 COPY . .
 
+RUN npm install -g npm@10.2.5
 RUN npm i
 RUN npm i -g serve
 RUN npm run build
