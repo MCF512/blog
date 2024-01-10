@@ -29,7 +29,7 @@ const UsersContainer = ({ className }) => {
       }
       setUsers(usersRes.data);
       setRoles(rolesRes.data);
-    });
+    }).catch(err => console.log);
   }, [shouldUpdateUsersList, userRole]);
 
   const onUserRemove = (userId) => {
